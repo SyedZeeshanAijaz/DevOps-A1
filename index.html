@@ -38,6 +38,7 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto " href="#work">Projects</a></li>
+          <li><a class="nav-link scrollto" href="#certificates">Certificates</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -266,6 +267,117 @@
       }
     </script>
     <!-- End Projects Section -->
+    <!-- Start Certificates Section -->
+    <section id="certificates" class="certificates-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">
+                Certificates
+              </h3>
+              <p class="subtitle-a">
+                Explore my certificates and achievements.
+              </p>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Certificate Search Bar (optional) -->
+        <!-- Add Search Bar -->
+        <div class="row mb-4">
+          <div class="col-md-12">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search certificates..." id="searchCertificateInput">
+              <button class="btn btn-primary" onclick="searchCertificates()">Search</button>
+            </div>
+          </div>
+        </div>
+        <!-- Certificate Items will be dynamically added here based on search results -->
+        <div class="row" id="certificateItems">
+          <!-- Certificate Items will be dynamically added here based on search results -->
+        </div>
+      </div>
+    </section>
+    <!-- End Certificates Section -->
+
+    <script>
+      // Certificate data
+      const certificates = [
+        {
+          imgSrc: "assets/img/Folio3 Internship Certificate.jpeg",
+          title: "Folio3 Internship Certificate",
+          date: "Issued: 1 Aug. 2023",
+          description: "Certificate for my 9 week internship at Folio3",
+        },
+        {
+          imgSrc: "assets/img/JavaScript-Certificate.jpg",
+          title: "JavaScript Course Completion Certificate",
+          date: "Issued: 27 Aug. 2022",
+          description: "Mosh Hamdani JavaScript Course Certificate",
+        },
+        {
+          imgSrc: "assets/img/HTML-CSS-Certificate.jpg",
+          title: "HTML and CSS Course Completion Certificate",
+          date: "Issued: 21 Jul. 2022",
+          description: "Mosh Hamdani HTML&CSS Course Certificate",
+        },
+        {
+          imgSrc: "assets/img/Scrum-Certificate.jpg",
+          title: "SCRUM FOUNDATION PROFESSIONAL CERTIFICATION",
+          date: "Issued: 21 Jul. 2022",
+          description: "Passed the SCRUM SFPC Test to earn this Certificate",
+        },
+      ];
+
+      // Function to display certificates
+      function displayCertificates(certificatesArray) {
+        const certificateItems = document.getElementById("certificateItems");
+        certificateItems.innerHTML = "";
+
+        certificatesArray.forEach((certificate) => {
+          const certificateHtml = `
+        <div class="col-md-4">
+          <div class="work-box">
+            <a href="${certificate.imgSrc}" data-gallery="certificateGallery" class="certificate-lightbox">
+              <div class="work-img">
+                <img src="${certificate.imgSrc}" alt="" class="img-fluid">
+              </div>
+            </a>
+            <div class="work-content">
+              <div class="row">
+                <div class="col-sm-8">
+                  <h2 class="w-title">${certificate.title}</h2>
+                  <div class="w-more">
+                    <span class="w-date">${certificate.date}</span>
+                  </div>
+                </div>
+              </div>
+              <p class="w-description">${certificate.description}</p>
+            </div>
+          </div>
+        </div>
+      `;
+          certificateItems.innerHTML += certificateHtml;
+        });
+      }
+
+      // Display certificates on page load
+      displayCertificates(certificates);
+
+      // Certificate search function
+      function searchCertificates() {
+        const searchInput = document.getElementById("searchCertificateInput").value.toLowerCase();
+        const filteredCertificates = certificates.filter((certificate) =>
+          certificate.title.toLowerCase().includes(searchInput)
+        );
+        displayCertificates(filteredCertificates);
+      }
+    </script>
+
+
+
+
 
 
   </main><!-- End #main -->
